@@ -15,6 +15,9 @@ Kompletní dokumentace pro gapps-workspace development environment.
 ### Code Quality
 - [**ESLint & Prettier Setup**](eslint-prettier.md) - Linting a formatting, konfigurace, integrace s editorem
 
+### Maintenance
+- [**Maintenance Guide**](maintenance.md) - Udržování workspace aktuální, update dependencies, troubleshooting
+
 ---
 
 ## 🎯 Quick Links
@@ -26,6 +29,7 @@ Kompletní dokumentace pro gapps-workspace development environment.
 
 **Pro zkušené:**
 - [Clasp Workflow](clasp-workflow.md) - rychlý command reference
+- [Maintenance Guide](maintenance.md) - update workspace pravidelně
 - Templates v `../templates/` - ready-to-use project starters
 
 ---

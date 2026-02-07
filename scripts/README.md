@@ -90,6 +90,49 @@ Pro více info: cat README.md
 
 ---
 
+### 3. `update-workspace.sh`
+
+**Účel:** Pravidelná kontrola a update všech dependencies a tools.
+
+**Použití:**
+```bash
+cd ~/Git/gapps-workspace
+./scripts/update-workspace.sh
+```
+
+**Co dělá:**
+1. Zkontroluje globální tools (clasp) a najde updates
+2. Zkontroluje outdated npm packages
+3. Spustí npm security audit
+4. Zkontroluje git status (uncommitted changes, remote sync)
+5. Zobrazí summary s doporučenými akcemi
+
+**Output:**
+```
+═══════════════════════════════════════════
+  Aktualizace globálních nástrojů
+───────────────────────────────────────────
+ ✓ clasp: 3.2.0 (up to date)
+
+═══════════════════════════════════════════
+  Aktualizace lokálních dependencies
+───────────────────────────────────────────
+ 📊 Checking outdated packages...
+ 
+Package    Current  Wanted  Latest
+eslint     8.57.0   8.57.1  10.0.0
+
+💡 Chceš aktualizovat? Spusť:
+   npm update              (minor/patch)
+   npm update --latest     (major updates)
+```
+
+**Doporučená frekvence:** 1× měsíčně nebo před začátkem nového projektu
+
+**Log file:** `/tmp/gapps-workspace-update.log`
+
+---
+
 ## 🔧 Development
 
 ### Přidání nového skriptu
