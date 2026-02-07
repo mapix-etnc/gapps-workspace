@@ -9,7 +9,7 @@ set -euo pipefail
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
-log() { echo "[$(date +'%H:%M:%S')] $*"; }
+log() { echo "[$(date +'%H:%M:%S')] $*" >&2; }
 error() { echo "[ERROR] $*" >&2; exit 1; }
 
 show_usage() {

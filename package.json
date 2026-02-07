@@ -1,0 +1,28 @@
+{
+  "name": "gapps-workspace",
+  "version": "1.0.0",
+  "description": "Universal Google Apps Script development workspace",
+  "private": true,
+  "scripts": {
+    "lint": "eslint '**/*.js' --ignore-pattern 'node_modules/**'",
+    "lint:fix": "eslint '**/*.js' --fix --ignore-pattern 'node_modules/**'",
+    "format": "prettier --write '**/*.js'",
+    "format:check": "prettier --check '**/*.js'"
+  },
+  "author": "m4p1x",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-googleappsscript": "^1.0.5",
+    "prettier": "^3.8.1"
+  },
+  "keywords": [
+    "google-apps-script",
+    "clasp",
+    "eslint",
+    "prettier",
+    "workspace"
+  ]
+}
