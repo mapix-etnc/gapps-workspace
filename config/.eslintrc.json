@@ -1,0 +1,39 @@
+{
+  "extends": ["google", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "googleappsscript/googleappsscript": true,
+    "es2020": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "script"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "require-jsdoc": "off",
+    "valid-jsdoc": "off",
+    "no-var": "error",
+    "prefer-const": "warn",
+    "max-len": ["warn", { "code": 100, "ignoreUrls": true }]
+  },
+  "globals": {
+    "SpreadsheetApp": "readonly",
+    "DocumentApp": "readonly",
+    "DriveApp": "readonly",
+    "GmailApp": "readonly",
+    "CalendarApp": "readonly",
+    "Logger": "readonly",
+    "Session": "readonly",
+    "ScriptApp": "readonly",
+    "UrlFetchApp": "readonly",
+    "Utilities": "readonly",
+    "HtmlService": "readonly",
+    "ContentService": "readonly",
+    "FormApp": "readonly",
+    "SlidesApp": "readonly",
+    "PropertiesService": "readonly",
+    "CacheService": "readonly"
+  }
+}

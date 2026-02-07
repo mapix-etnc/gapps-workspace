@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "checkJs": true,
+    "maxNodeModuleJsDepth": 0,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["**/*.js"],
+  "exclude": ["node_modules", ".clasp.json"]
+}

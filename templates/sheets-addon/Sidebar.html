@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 16px;
+      }
+      
+      h2 {
+        color: #1a73e8;
+        margin-top: 0;
+      }
+      
+      .info-box {
+        background: #f1f3f4;
+        padding: 12px;
+        border-radius: 4px;
+        margin: 16px 0;
+      }
+      
+      .info-item {
+        margin: 8px 0;
+      }
+      
+      .info-label {
+        font-weight: bold;
+        color: #5f6368;
+      }
+      
+      button {
+        background: #1a73e8;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 8px 0;
+        width: 100%;
+      }
+      
+      button:hover {
+        background: #1765cc;
+      }
+      
+      #status {
+        margin-top: 16px;
+        padding: 8px;
+        border-radius: 4px;
+        display: none;
+      }
+      
+      .status-success {
+        background: #e6f4ea;
+        color: #137333;
+        border: 1px solid #c6e1c6;
+      }
+      
+      .status-error {
+        background: #fce8e6;
+        color: #c5221f;
+        border: 1px solid #f4c7c3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Custom Sidebar</h2>
+    
+    <div class="info-box" id="sheetInfo">
+      <div class="info-item">
+        <span class="info-label">Sheet:</span>
+        <span id="sheetName">Loading...</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Rows:</span>
+        <span id="sheetRows">-</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Columns:</span>
+        <span id="sheetColumns">-</span>
+      </div>
+    </div>
+    
+    <button onclick="processData()">Process Data</button>
+    <button onclick="refreshInfo()">Refresh Info</button>
+    
+    <div id="status"></div>
+    
+    <script>
+      // Load sheet info on sidebar open
+      google.script.run
+        .withSuccessHandler(displaySheetInfo)
+        .withFailureHandler(showError)
+        .getSheetData();
+      
+      /**
+       * Display sheet information
+       */
+      function displaySheetInfo(data) {
+        document.getElementById('sheetName').textContent = data.name;
+        document.getElementById('sheetRows').textContent = data.rows;
+        document.getElementById('sheetColumns').textContent = data.columns;
+      }
+      
+      /**
+       * Process data button handler
+       */
+      function processData() {
+        showStatus('Processing...', false);
+        
+        google.script.run
+          .withSuccessHandler(() => {
+            showStatus('Data processed successfully!', true);
+          })
+          .withFailureHandler((error) => {
+            showError(error);
+          })
+          .processSheetData();
+      }
+      
+      /**
+       * Refresh info button handler
+       */
+      function refreshInfo() {
+        google.script.run
+          .withSuccessHandler(displaySheetInfo)
+          .withFailureHandler(showError)
+          .getSheetData();
+      }
+      
+      /**
+       * Show status message
+       */
+      function showStatus(message, isSuccess) {
+        const status = document.getElementById('status');
+        status.textContent = message;
+        status.className = isSuccess ? 'status-success' : 'status-error';
+        status.style.display = 'block';
+        
+        if (isSuccess) {
+          setTimeout(() => {
+            status.style.display = 'none';
+          }, 3000);
+        }
+      }
+      
+      /**
+       * Show error message
+       */
+      function showError(error) {
+        showStatus(`Error: ${error.message}`, false);
+      }
+    </script>
+  </body>
+</html>
